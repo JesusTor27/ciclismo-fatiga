@@ -5,7 +5,7 @@ def entrenar():
     from sklearn.pipeline import Pipeline
     from sklearn.tree import DecisionTreeRegressor
     from sklearn.model_selection import train_test_split
-    from sklearn.metrics import mean_squared_error, r2_score
+    from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
     MODELO_PATH = "modelo_ciclismo.pkl"
 
@@ -35,6 +35,7 @@ def entrenar():
 
     print("Evaluación del modelo:")
     print("MSE:", round(mean_squared_error(y_test, y_pred), 2))
+    print("MAE:", round(mean_absolute_error(y_test, y_pred), 2))
     print("R2:", round(r2_score(y_test, y_pred), 4))
 
     # Guardar modelo
