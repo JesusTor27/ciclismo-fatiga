@@ -1,6 +1,6 @@
 import streamlit as st
-import subprocess
 import os
+import train
 import predict
 
 st.title("Predicción de Fatiga en Ciclismo")
@@ -10,7 +10,7 @@ if st.button("Entrenar modelo"):
     if os.path.exists("modelo_ciclismo.pkl"):
         st.warning("El modelo ya fue entrenado")
     else:
-        subprocess.run(["python", "train.py"])
+        train.entrenar() 
         st.success("Modelo entrenado correctamente")
 
 st.write("---")
