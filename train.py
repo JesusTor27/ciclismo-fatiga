@@ -3,7 +3,8 @@ def entrenar():
     import joblib
 
     from sklearn.pipeline import Pipeline
-    from sklearn.tree import DecisionTreeRegressor
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.neighbors import KNeighborsRegressor
     from sklearn.model_selection import train_test_split
     from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
@@ -22,9 +23,10 @@ def entrenar():
         X, y, test_size=0.2, random_state=42
     )
 
-    # Pipeline
+    # Pipeline (KNN y normalización)
     modelo = Pipeline([
-        ("modelo", DecisionTreeRegressor(max_depth=5, random_state=42))
+        ("scaler", StandardScaler()),
+        ("modelo", KNeighborsRegressor(n_neighbors=10))
     ])
 
     # Entrenamiento
@@ -43,9 +45,7 @@ def entrenar():
     print("\nModelo entrenado y guardado correctamente.")
     
     return (
-    round(mean_squared_error(y_test, y_pred), 2),
-    round(mean_absolute_error(y_test, y_pred), 2),
-    round(r2_score(y_test, y_pred), 4)
+        round(mean_squared_error(y_test, y_pred), 2),
+        round(mean_absolute_error(y_test, y_pred), 2),
+        round(r2_score(y_test, y_pred), 4)
     )
-    
-
