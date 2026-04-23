@@ -41,3 +41,11 @@ def entrenar():
     # Guardar modelo
     joblib.dump(modelo, MODELO_PATH)
     print("\nModelo entrenado y guardado correctamente.")
+    
+    return (
+    round(mean_squared_error(y_test, y_pred), 2),
+    round(mean_absolute_error(y_test, y_pred), 2),
+    round(r2_score(y_test, y_pred), 4)
+    )
+    
+
