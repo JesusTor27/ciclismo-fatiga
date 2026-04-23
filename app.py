@@ -10,8 +10,14 @@ if st.button("Entrenar modelo"):
     if os.path.exists("modelo_ciclismo.pkl"):
         st.warning("El modelo ya fue entrenado")
     else:
-        train.entrenar() 
+        mse, mae, r2 = train.entrenar() 
         st.success("Modelo entrenado correctamente")
+
+        # mostrar métricas
+        st.subheader("📊 Métricas del modelo")
+        st.write("MSE:", mse)
+        st.write("MAE:", mae)
+        st.write("R2:", r2)
 
 st.write("---")
 
