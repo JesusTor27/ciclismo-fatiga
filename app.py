@@ -14,7 +14,7 @@ if st.button("Entrenar modelo"):
         st.success("Modelo entrenado correctamente")
 
         # mostrar métricas
-        st.subheader("📊 Métricas del modelo")
+        st.subheader("Métricas del modelo")
         st.write("MSE:", mse)
         st.write("MAE:", mae)
         st.write("R2:", r2)
