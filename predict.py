@@ -3,13 +3,6 @@ import pandas as pd
 
 MODELO_PATH = "modelo_ciclismo.pkl"
 
-try:
-    modelo = joblib.load(MODELO_PATH)
-    print("Modelo cargado correctamente...\n")
-except:
-    print("Error: primero debes ejecutar train.py")
-    exit()
-
 def interpretar_fatiga(valor):
     if valor <= 20:
         return "Muy baja - Sin fatiga significativa"
@@ -24,8 +17,14 @@ def interpretar_fatiga(valor):
 
 def predecir(frecuencia, potencia, cadencia, tiempo, temperatura, pendiente, velocidad):
     
-    datos = pd.DataFrame([[frecuencia, potencia, cadencia, tiempo, temperatura, pendiente, velocidad]],
-        columns=["frecuencia_cardiaca", "potencia", "cadencia", "tiempo","temperatura", "pendiente", "velocidad"])
+   
+    modelo = joblib.load(MODELO_PATH)
+
+    datos = pd.DataFrame([[frecuencia, potencia, cadencia, tiempo,
+                           temperatura, pendiente, velocidad]],
+        columns=["frecuencia_cardiaca", "potencia", "cadencia", "tiempo",
+                 "temperatura", "pendiente", "velocidad"]
+    )
 
     pred = modelo.predict(datos)
     valor = round(pred[0], 2)
