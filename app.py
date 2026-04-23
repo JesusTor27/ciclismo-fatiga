@@ -5,6 +5,14 @@ import predict
 
 st.title("Predicción de Fatiga en Ciclismo")
 
+# BOTÓN REINICIAR
+if st.button("Reiniciar modelo"):
+    if os.path.exists("modelo_ciclismo.pkl"):
+        os.remove("modelo_ciclismo.pkl")
+        st.success("Modelo eliminado, puedes volver a entrenar")
+    else:
+        st.warning("No hay modelo para eliminar")
+
 # BOTÓN ENTRENAR
 if st.button("Entrenar modelo"):
     if os.path.exists("modelo_ciclismo.pkl"):
