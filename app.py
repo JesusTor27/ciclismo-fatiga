@@ -4,6 +4,9 @@ import train
 import predict
 
 st.title("Predicción de Fatiga en Ciclismo")
+# ESTADO
+if "modelo_entrenado" not in st.session_state:
+    st.session_state.modelo_entrenado = False
 
 # BOTÓN REINICIAR
 if st.button("Reiniciar modelo"):
@@ -17,11 +20,12 @@ if st.button("Reiniciar modelo"):
 if st.button("Entrenar modelo"):
     if os.path.exists("modelo_ciclismo.pkl"):
         st.warning("El modelo ya fue entrenado")
+        st.session_state.modelo_entrenado = True
     else:
-        mse, mae, r2 = train.entrenar() 
+        mse, mae, r2 = train.entrenar()
         st.success("Modelo entrenado correctamente")
+        st.session_state.modelo_entrenado = True
 
-        # mostrar métricas
         st.subheader("Métricas del modelo")
         st.write("MSE:", mse)
         st.write("MAE:", mae)
