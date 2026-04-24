@@ -49,8 +49,3 @@ if st.button("Predecir"):
     st.subheader("Resultado")
     st.write("Fatiga estimada:", valor)
     st.write("Interpretación:", interpretacion)
-    # mostrar métricas
-    st.subheader("Métricas del modelo")
-    st.write("MSE:", mse)
-    st.write("MAE:", mae)
-    st.write("R2:", r2)
