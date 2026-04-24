@@ -17,11 +17,6 @@ if st.button("Reiniciar modelo"):
 if st.button("Entrenar modelo"):
     if os.path.exists("modelo_ciclismo.pkl"):
         st.warning("El modelo ya fue entrenado")
-        # mostrar métricas
-        st.subheader("Métricas del modelo")
-        st.write("MSE:", mse)
-        st.write("MAE:", mae)
-        st.write("R2:", r2)
 
     else:
         mse, mae, r2 = train.entrenar()
