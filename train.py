@@ -26,7 +26,7 @@ def entrenar():
     # Pipeline (KNN y normalización)
     modelo = Pipeline([
         ("scaler", StandardScaler()),
-        ("modelo", KNeighborsRegressor(n_neighbors=5))
+        ("modelo", KNeighborsRegressor(n_neighbors=13))
     ])
 
     # Entrenamiento
